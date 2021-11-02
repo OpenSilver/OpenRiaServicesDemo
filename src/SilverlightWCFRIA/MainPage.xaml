@@ -15,7 +15,7 @@
                               Source="/ShowData" Navigated="ContentFrame_Navigated" NavigationFailed="ContentFrame_NavigationFailed">
                 <navigation:Frame.UriMapper>
                   <uriMapper:UriMapper>
-                        <uriMapper:UriMapping Uri="" MappedUri="/Views/ShowData.xaml"/>
+                        <uriMapper:UriMapping Uri=" " MappedUri="/Views/ShowData.xaml"/>
                     <uriMapper:UriMapping Uri="/{pageName}" MappedUri="/Views/{pageName}.xaml"/>
                   </uriMapper:UriMapper>
                 </navigation:Frame.UriMapper>
