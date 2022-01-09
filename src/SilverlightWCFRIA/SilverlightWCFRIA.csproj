@@ -61,7 +61,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Content>
     <PackageReference Include="OpenRiaServices.OpenSilver.Client" Version="5.0.0-preview0003" />
-    <PackageReference Include="OpenSilver.WorkInProgress" Version="1.0.0-alpha-020" />
+    <PackageReference Include="OpenSilver" Version="1.0.0" />
     <Page Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
