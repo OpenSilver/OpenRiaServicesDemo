@@ -28,10 +28,11 @@ namespace SilverlightWCFRIA
 
 #if OPENSILVER
             KnownTypesHelper.AddKnownType(typeof(student));
-            DomainContext.DomainClientFactory = new OpenRiaServices.DomainServices.Client.Web.SoapDomainClientFactory()
-            {
-                ServerBaseUri = new Uri("http://localhost:54837/"),
-            };
+            ((DomainClientFactory)DomainContext.DomainClientFactory).ServerBaseUri = new Uri("http://localhost:54837/");
+            //DomainContext.DomainClientFactory = new OpenRiaServices.DomainServices.Client.Web.SoapDomainClientFactory()
+            //{
+            //    ServerBaseUri = new Uri("http://localhost:54837/"),
+            //};
 #endif
         }
 
