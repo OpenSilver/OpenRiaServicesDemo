@@ -1,4 +1,4 @@
-using DotNetForHtml5;
+﻿using DotNetForHtml5;
 using Microsoft.JSInterop;
 using Microsoft.JSInterop.WebAssembly;
 

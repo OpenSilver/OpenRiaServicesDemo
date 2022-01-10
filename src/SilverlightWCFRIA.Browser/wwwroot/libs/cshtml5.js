@@ -82,6 +82,16 @@ if (div.style.display == "grid") {
 // DEFINE OTHER SCRIPTS
 //------------------------------
 
+document.getXamlRoot = function()
+{
+	let xamlRoot = document.getElementById("opensilver-root");
+	if (!xamlRoot)
+	{
+		xamlRoot = document.getElementById("cshtml5-root");
+	}
+	return xamlRoot;
+}
+
 document.ResXFiles = {};
 
 document.modifiersPressed = 0;
@@ -110,8 +120,9 @@ document.onkeyup = function (evt) {
     document.refreshKeyModifiers(evt);
 };
 
-document.jsSimulatorObjectReferences = new Array();
+document.jsObjRef = new Array();
 document.callbackCounterForSimulator = 0;
+document.measureTextBlockElement = null;
 
 document.reroute = function reroute(e, elem, shiftKey) {
     shiftKey = shiftKey || false;
@@ -155,6 +166,346 @@ document.addToPerformanceCounters = function (name, initialTime) {
     }
     counter.time += elapsedTime;
     counter.count += 1;
+}
+
+document.interopErrors = {};
+
+document.getElementByIdSafe = function (id) {
+    let element = document.getElementById(id);
+    if (element == null) {
+        element = document.createElement("div");
+        if (!document.interopErrors[id]) {
+            document.interopErrors[id] = 0;
+        }
+        document.interopErrors[id]++;
+    }
+    return element;
+}
+
+document.setGridCollapsedDuetoHiddenColumn = function (id) {
+    const element = document.getElementById(id);
+    if (!element)
+        return;
+
+	if (element.getAttribute('data-isCollapsedDueToHiddenColumn' == true)){
+		element.style.overflow = 'visible';
+		element.setAttribute('data-isCollapsedDueToHiddenColumn', false);
+	}
+}
+
+document.setDisplayTableCell = function (id) {
+    const element = document.getElementById(id);
+    if (!element || element.tagName == 'SPAN')
+        return;
+
+    element.style.display = 'table-cell';
+}
+
+document.getActualWidthAndHeight = function (element) {
+	return (typeof element === 'undefined' || element === null) ? '0|0' : element['offsetWidth'].toFixed(3) + '|' + element['offsetHeight'].toFixed(3);
+}
+
+document.createElementSafe = function (tagName, id, parentElement, index) {
+	const newElement = document.createElement(tagName);
+
+	newElement.setAttribute("id", id);
+
+    if (typeof parentElement == 'string') {
+        parentElement = document.getElementById(parentElement);
+    }
+
+    if (parentElement == null) {
+        console.log('createElement is failed becaused of the removed parent.');
+        return;
+    }
+
+	if(index < 0 || index >= parentElement.children.length)	{
+		parentElement.appendChild(newElement);
+	}
+	else {
+		var nextSibling = parentElement.children[index];
+		parentElement.insertBefore(newElement, nextSibling);
+	}
+}
+
+document.set2dContextProperty = function (id, propertyName, propertyValue) {
+    const element = document.getElementById(id);
+    if (!element || element.tagName !== 'CANVAS')
+        return;
+
+    element.getContext('2d')[propertyName] = propertyValue;
+}
+
+document.invoke2dContextMethod = function (id, methodName, args) {
+    const element = document.getElementById(id);
+    if (!element || element.tagName !== 'CANVAS')
+        return undefined;
+    return CanvasRenderingContext2D.prototype[methodName].apply(element.getContext('2d'),
+        args.split(',')
+            .map(Function.prototype.call, String.prototype.trim)
+            .filter(i => i.length > 0));
+}
+
+document.setDomStyle = function (id, propertyName, value) {
+    const element = document.getElementById(id);
+    if (!element)
+        return;
+
+    element.style[propertyName] = value;
+}
+
+document.setDomTransform = function (id, value) {
+    const element = document.getElementById(id);
+    if (!element)
+        return;
+
+    element.style['transform'] = value;
+    element.style['msTransform'] = value;
+    element.style['WebkitTransform'] = value;
+}
+
+document.setDomTransformOrigin = function (id, value) {
+    const element = document.getElementById(id);
+    if (!element)
+        return;
+
+    element.style['transformOrigin'] = value;
+    element.style['msTransformOrigin'] = value;
+    element.style['WebkitTransformOrigin'] = value;
+}
+
+document.setDomAttribute = function (id, propertyName, value) {
+    const element = document.getElementById(id);
+    if (!element)
+        return;
+
+    element.setAttribute(propertyName, value);
+}
+
+document.removeEventListenerSafe = function (element, method, func) {
+    if (typeof element == 'string') {
+        element = document.getElementById(element);
+    }
+	if (element){
+		element.removeEventListener(method, func);
+	}
+}
+
+document.addEventListenerSafe = function (element, method, func) {
+    if (typeof element == 'string') {
+        element = document.getElementById(element);
+    }
+	if (element){
+		element.addEventListener(method, func);
+	}
+}
+
+document.eventCallback = function (callbackId, arguments, sync) {
+	const argsArray = arguments;
+	const idWhereCallbackArgsAreStored = "callback_args_" + document.callbackCounterForSimulator++;
+	document.jsObjRef[idWhereCallbackArgsAreStored] = argsArray;
+	if (sync) {
+		return window.onCallBack.OnCallbackFromJavaScript(callbackId, idWhereCallbackArgsAreStored, argsArray, true);
+	} else {
+		setTimeout(
+			function()
+			{{
+				window.onCallBack.OnCallbackFromJavaScript(callbackId, idWhereCallbackArgsAreStored, argsArray, false);
+			}}
+			, 1);
+	}
+}
+
+document.callScriptSafe = function (referenceId, javaScriptToExecute, errorCallBackId) {
+    try {
+        document.jsObjRef[referenceId] = eval(javaScriptToExecute); 
+        return document.jsObjRef[referenceId];
+    } catch (error) {
+        document.errorCallback(error, errorCallBackId); 
+    }
+}
+
+document.errorCallback = function (error, IndexOfNextUnmodifiedJSCallInList) {
+	const idWhereErrorCallbackArgsAreStored = "callback_args_" + document.callbackCounterForSimulator++;
+	const argsArr = [];
+	argsArr[0] = error.message;
+	argsArr[1] = IndexOfNextUnmodifiedJSCallInList;
+	document.jsObjRef[idWhereErrorCallbackArgsAreStored] = argsArr;
+	window.onCallBack.OnCallbackFromJavaScriptError(idWhereErrorCallbackArgsAreStored);
+}
+
+document.rerouteMouseEvents = function (id) {
+    document.onmouseup = function(e) {
+        if(e.doNotReroute == undefined)
+        {
+            var element = document.getElementById(id);
+            if (element) {
+                document.reroute(e, element);
+            }
+        }
+    }
+    document.onmouseover = function(e) {
+        if(e.doNotReroute == undefined)
+        {
+            var element = document.getElementById(id);
+            if (element) {
+                document.reroute(e, element);
+            }
+        }
+    }
+    document.onmousedown = function(e) {
+        if(e.doNotReroute == undefined)
+        {
+            var element = document.getElementById(id);
+            if (element) {
+                document.reroute(e, element);
+            }
+        }
+    }
+    document.onmouseout = function(e) {
+        if(e.doNotReroute == undefined)
+        {
+            var element = document.getElementById(id);
+            if (element) {
+                document.reroute(e, element);
+            }
+        }
+    }
+    document.onmousemove = function(e) {
+        if(e.doNotReroute == undefined)
+        {
+            var element = document.getElementById(id);
+            if (element) {
+                document.reroute(e, element);
+            }
+        }
+    }
+    document.onclick = function(e) {
+        if(e.doNotReroute == undefined)
+        {
+            var element = document.getElementById(id);
+            if (element) {
+                document.reroute(e, element);
+            }
+        }
+    }
+    document.oncontextmenu = function(e) {
+        if(e.doNotReroute == undefined)
+        {
+            var element = document.getElementById(id);
+            if (element) {
+                document.reroute(e, element);
+            }
+        }
+    }
+    document.ondblclick = function(e) {
+        if(e.doNotReroute == undefined)
+        {
+            var element = document.getElementById(id);
+            if (element) {
+                document.reroute(e, element);
+            }
+        }
+    }
+}
+
+document.setVisualBounds = function(id, left, top, width, height, bSetAbsolutePosition, bSetZeroMargin, bSetZeroPadding) {
+    var element = document.getElementById(id);
+    if (element)
+    {
+        element.style.left = left + "px";
+        element.style.top = top + "px";
+        element.style.width = width + "px";
+        element.style.height = height + "px";
+        
+        if (bSetAbsolutePosition) {
+            element.style.position = "absolute";
+        }
+        if (bSetZeroMargin) {
+            element.style.margin = "0";
+        }
+        if (bSetZeroPadding) {
+            element.style.padding = "0";
+        }
+    }
+}
+
+document.setPosition = function(id, left, top, bSetAbsolutePosition, bSetZeroMargin, bSetZeroPadding) {
+    var element = document.getElementById(id);
+    if (element)
+    {
+        element.style.left = left + "px";
+        element.style.top = top + "px";
+        
+        if (bSetAbsolutePosition) {
+            element.style.position = "absolute";
+        }
+        if (bSetZeroMargin) {
+            element.style.margin = "0";
+        }
+        if (bSetZeroPadding) {
+            element.style.padding = "0";
+        }
+    }
+}
+
+document.measureTextBlock = function(text, fontSize, fontFamily, fontStyle, fontWeight, textWrapping, padding, width, maxWidth) {
+    var element = document.measureTextBlockElement;
+    if (element)
+    {
+        var runElement = element.firstElementChild;
+        if (runElement != null) {
+            runElement.innerText = text;
+            runElement.style.fontSize = fontSize;
+            runElement.style.fontWeight = fontWeight;
+        }
+
+        if (fontSize.length > 0) {
+            element.style.fontSize = fontSize;
+        }
+        if (fontFamily.length > 0) {
+            if (fontFamily === "-") {
+                fontFamily = "";
+            }
+            element.style.fontFamily = fontFamily;
+        }
+        if (fontStyle.length > 0) {
+            element.style.fontStyle = fontStyle;
+        }
+        if (fontWeight.length > 0) {
+            element.style.fontWeight = fontWeight;
+        }
+        if (textWrapping.length > 0) {
+            element.style.whiteSpace = textWrapping;
+        }
+        if (padding.length > 0) {
+            element.style.boxSizing = "border-box";
+            element.style.padding = padding;
+        }
+
+        element.style.width = width;
+        element.style.maxWidth = maxWidth;
+
+        return element.offsetWidth + "|" + element.offsetHeight;
+    }
+
+    return "0|0";
+}
+
+document.setContentString = function(id, text, removeTextWrapping) {
+    var el = document.getElementById(id);
+    if (el)
+    {
+        el.innerText = text;
+        if (removeTextWrapping)
+            el.style.whiteSpace = "nowrap";
+    };
+}
+
+window.ViewInteropErrors = function () {
+    for (var key in document.interopErrors) {
+        console.log(`Unable to find element with id '${key}' (${document.interopErrors[key]} time(s)).`);
+    }
 }
 
 window.ViewProfilerResults = function () {
@@ -541,6 +892,12 @@ document.functionToCompareWordForFilter = function (wordToCompare) {
     }
 }
 
+function callScriptableObjectEvent(scriptableObjectName, eventName, passedArgs) {
+    var scriptableObj = window[scriptableObjectName];
+    if (scriptableObj && scriptableObj[eventName]) {
+        scriptableObj[eventName].apply(scriptableObj, passedArgs);
+    }
+}
 
 //------------------------------
 // SCRDOC POLYFILL (cf. https://github.com/jugglinmike/srcdoc-polyfill )
@@ -628,7 +985,7 @@ if (!Array.from) {
 
             // 16. Let k be 0.
             var k = 0;
-            // 17. Repeat, while k < len… (also steps a - h)
+            // 17. Repeat, while k < len (also steps a - h)
             var kValue;
             while (k < len) {
                 kValue = items[k];
@@ -659,7 +1016,7 @@ if (!Array.from) {
     function createShiftArr(step) {
 
         var space = '    ';
-	
+
         if ( isNaN(parseInt(step)) ) {  // argument is string
             space = step;
         } else { // argument is integer
@@ -758,8 +1115,7 @@ if (!Array.from) {
                                             if( ar[ix].search(/xmlns:/) > -1  || ar[ix].search(/xmlns=/) > -1) {
                                                 str += shift[deep]+ar[ix];
                                                 withNamespace = 2;
-                                            } 
-			
+                                            }
                                             else {
                                                 str += ar[ix];
                                             }
@@ -798,4 +1154,3 @@ var jsilConfig = {
       "index"
     ]
 };
-

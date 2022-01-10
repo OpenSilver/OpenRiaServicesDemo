@@ -1,5 +1,4 @@
-﻿using DotNetForHtml5;
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+﻿using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Net.Http;
@@ -10,10 +9,10 @@ namespace SilverlightWCFRIA.Browser
 {
     public class Program
     {
-        public async static Task Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
-            builder.RootComponents.Add<App>("app");
+            builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
@@ -24,9 +23,9 @@ namespace SilverlightWCFRIA.Browser
         public static void RunApplication()
         {
             Application.RunApplication(() =>
-                {
-                    var app = new SilverlightWCFRIA.App();
-                });
+            {
+                var app = new SilverlightWCFRIA.App();
+            });
         }
     }
 }
