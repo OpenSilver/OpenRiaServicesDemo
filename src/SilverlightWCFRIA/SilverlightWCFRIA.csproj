@@ -60,8 +60,12 @@
     <Content Include="Views\UpdateData.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Content>
-    <PackageReference Include="OpenSilver" Version="1.0.0" />
-    <PackageReference Include="OpenSilver.OpenRiaServices.Client.Core.4.6" Version="1.0.0-private-2021-12-211" />
+    <PackageReference Include="OpenSilver" Version="1.2.1" />
+    <PackageReference Include="OpenSilver.OpenRiaServices.Client.Core.4.6" Version="1.2.0" />
+    <PackageReference Include="OpenSilver.OpenRiaServices.CodeGen.4.6" Version="1.2.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <Page Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
