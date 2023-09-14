@@ -6,7 +6,25 @@ namespace SilverlightWCFRIA
 {
     public partial class ErrorWindow : ChildWindow
     {
-        public ErrorWindow(Exception e)
+        public static void Show(Exception ex)
+        {
+            var errorWindow = new ErrorWindow(ex);
+            errorWindow.Show();
+        }
+
+        public static void Show(Uri uri)
+        {
+            var errorWindow = new ErrorWindow(uri);
+            errorWindow.Show();
+        }
+
+        public static void Show(string message, string details = "")
+        {
+            var errorWindow = new ErrorWindow(message, details);
+            errorWindow.Show();
+        }
+
+        private ErrorWindow(Exception e)
         {
             InitializeComponent();
             if (e != null)
@@ -15,7 +33,7 @@ namespace SilverlightWCFRIA
             }
         }
 
-        public ErrorWindow(Uri uri)
+        private ErrorWindow(Uri uri)
         {
             InitializeComponent();
             if (uri != null)
@@ -24,7 +42,7 @@ namespace SilverlightWCFRIA
             }
         }
 
-        public ErrorWindow(string message, string details)
+        private ErrorWindow(string message, string details)
         {
             InitializeComponent();
             ErrorTextBox.Text = message + Environment.NewLine + Environment.NewLine + details;

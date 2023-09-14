@@ -1,14 +1,16 @@
-﻿<Application   
-  x:Class="SilverlightWCFRIA.App"
-  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<Application x:Class="SilverlightWCFRIA.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:app="clr-namespace:SilverlightWCFRIA"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-  <Application.Resources>
-    <ResourceDictionary>
-      <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="Assets/Styles.xaml"/>
-      </ResourceDictionary.MergedDictionaries>
-    </ResourceDictionary>
-  </Application.Resources>
-
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Assets/Styles.xaml" />
+                <ResourceDictionary>
+                    <app:NotOperatorValueConverter x:Key="NotOperatorValueConverter" />
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>
