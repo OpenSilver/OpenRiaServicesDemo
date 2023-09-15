@@ -97,8 +97,4 @@
     <Folder Include="Helpers\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Views\About.xaml" />
-  </ItemGroup>
-
 </Project>
