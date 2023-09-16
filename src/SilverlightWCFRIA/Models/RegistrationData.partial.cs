@@ -22,6 +22,8 @@ namespace SilverlightWCFRIA.Web
         /// </summary>
         [Required(ErrorMessage = "This field is required")]
         [Display(Order = 3, Name = "Password", Description = "The password must be 7 characters long and must contain at least one special character e.g. @ or #")]
+        [RegularExpression("^.*[^a-zA-Z0-9].*$", ErrorMessage = "A password needs to contain at least one special character e.g. @ or #")]
+        [StringLength(50, MinimumLength = 7, ErrorMessage = "Password must be at least 7 and at most 50 characters long")]
         public string Password
         {
             get
