@@ -1,4 +1,4 @@
-﻿namespace SilverlightWCFRIA.Web
+namespace $ext_safeprojectname$.Web
 {
     /// <summary>
     /// Partial class extending the User type that adds shared properties and methods.

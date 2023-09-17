@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Web;
 
-namespace SilverlightWCFRIA.Web
+namespace $ext_safeprojectname$.Web
 {
     public class Global : System.Web.HttpApplication
     {

@@ -2,7 +2,7 @@
 using Microsoft.JSInterop;
 using Microsoft.JSInterop.WebAssembly;
 
-namespace SilverlightWCFRIA.Browser.Interop
+namespace $ext_safeprojectname$.Browser.Interop
 {
     public class UnmarshalledJavaScriptExecutionHandler : IWebAssemblyExecutionHandler
     {

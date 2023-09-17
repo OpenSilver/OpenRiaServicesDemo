@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace SilverlightWCFRIA
+namespace $ext_safeprojectname$
 {
     public partial class MainPage : UserControl
     {

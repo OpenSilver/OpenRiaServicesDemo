@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components.CompilerServices;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.Routing;
 
-namespace SilverlightWCFRIA.Browser
+namespace $ext_safeprojectname$.Browser
 {
     public class App : ComponentBase
     {

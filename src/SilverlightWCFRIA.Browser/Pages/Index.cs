@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.JSInterop;
-using SilverlightWCFRIA.Browser.Interop;
+using $ext_safeprojectname$.Browser.Interop;
 
-namespace SilverlightWCFRIA.Browser.Pages
+namespace $ext_safeprojectname$.Browser.Pages
 {
     [Route("/")]
     public class Index : ComponentBase

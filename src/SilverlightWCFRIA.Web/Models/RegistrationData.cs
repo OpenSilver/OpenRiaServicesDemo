@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-namespace SilverlightWCFRIA.Web
+namespace $ext_safeprojectname$.Web
 {
     /// <summary>
     /// Class containing the values and validation rules for user registration.

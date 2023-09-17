@@ -1,4 +1,4 @@
-﻿namespace SilverlightWCFRIA.Controls
+﻿namespace $ext_safeprojectname$.Controls
 {
     /// <summary>
     /// Names and helpers for visual states in the controls.

@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="SilverlightWCFRIA.Web.Global" Language="C#" %>
+<%@ Application Codebehind="Global.asax.cs" Inherits="$ext_safeprojectname$.Web.Global" Language="C#" %>

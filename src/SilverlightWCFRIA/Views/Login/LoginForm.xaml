@@ -3,8 +3,8 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-            xmlns:local="clr-namespace:SilverlightWCFRIA.Controls"
-            x:Class="SilverlightWCFRIA.LoginUI.LoginForm"
+            xmlns:local="clr-namespace:$ext_safeprojectname$.Controls"
+            x:Class="$ext_safeprojectname$.LoginUI.LoginForm"
             KeyDown="LoginForm_KeyDown"
             mc:Ignorable="d"
             d:DataContext="{d:DesignInstance Type=login:LoginInfo}">

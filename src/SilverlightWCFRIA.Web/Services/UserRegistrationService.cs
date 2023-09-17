@@ -1,11 +1,11 @@
-﻿using OpenRiaServices.DomainServices.Hosting;
+using OpenRiaServices.DomainServices.Hosting;
 using OpenRiaServices.DomainServices.Server;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Profile;
 using System.Web.Security;
 
-namespace SilverlightWCFRIA.Web
+namespace $ext_safeprojectname$.Web
 {
     // TODO: Switch to a secure endpoint when deploying the application.
     //       The user's name and password should only be passed using https.

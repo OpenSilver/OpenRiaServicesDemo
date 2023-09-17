@@ -2,7 +2,7 @@
 
 using OpenRiaServices.DomainServices.Client;
 using OpenRiaServices.DomainServices.Client.ApplicationServices;
-using SilverlightWCFRIA.Web;
+using $ext_safeprojectname$.Web;
 
 #endif
 
@@ -10,7 +10,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace SilverlightWCFRIA
+namespace $ext_safeprojectname$
 {
     public partial class App : Application
     {

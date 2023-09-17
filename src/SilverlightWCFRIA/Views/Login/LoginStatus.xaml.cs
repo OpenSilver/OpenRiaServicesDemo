@@ -1,11 +1,11 @@
 ﻿using OpenRiaServices.DomainServices.Client.ApplicationServices;
-using SilverlightWCFRIA.Web;
+using $ext_safeprojectname$.Web;
 using System.ComponentModel;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace SilverlightWCFRIA.LoginUI
+namespace $ext_safeprojectname$.LoginUI
 {
     /// <summary>
     /// <see cref="UserControl"/> class that shows the current login status and allows login and logout.

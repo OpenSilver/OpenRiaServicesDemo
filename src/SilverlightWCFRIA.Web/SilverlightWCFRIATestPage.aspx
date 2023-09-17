@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" %>
+<%@ Page Language="C#" AutoEventWireup="true" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>SilverlightWCFRIA</title>
+    <title>$ext_safeprojectname$</title>
     <style type="text/css">
         html, body {
             height: 100%;
@@ -66,7 +66,7 @@
             <object data="data:applica
             tion/x-silverlight-2,"
                 type="application/x-silverlight-2" width="100%" height="100%">
-                <param name="source" value="ClientBin/SilverlightWCFRIA.xap" />
+                <param name="source" value="ClientBin/$ext_safeprojectname$.xap" />
                 <param name="onError" value="onSilverlightError" />
                 <param name="background" value="white" />
                 <param name="minRuntimeVersion" value="4.0.50826.0" />

@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace SilverlightWCFRIA.LoginUI
+namespace $ext_safeprojectname$.LoginUI
 {
     /// <summary>
     /// <see cref="ChildWindow"/> class that controls the registration process.

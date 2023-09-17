@@ -1,7 +1,7 @@
 ﻿using OpenRiaServices.DomainServices.Client.ApplicationServices;
 using System;
 
-namespace SilverlightWCFRIA.Web
+namespace $ext_safeprojectname$.Web
 {
     /// <summary>
     /// Context for the RIA application.

@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace SilverlightWCFRIA.Views
+namespace $ext_safeprojectname$.Views
 {
     public partial class Home : Page
     {

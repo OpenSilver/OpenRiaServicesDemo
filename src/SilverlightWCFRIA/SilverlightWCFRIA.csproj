@@ -11,8 +11,8 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RazorLangVersion>3.0</RazorLangVersion>
-    <LinkedOpenRiaServerProject>..\SilverlightWCFRIA.Web\SilverlightWCFRIA.Web.csproj</LinkedOpenRiaServerProject>
-    <RootNamespace>SilverlightWCFRIA.Web</RootNamespace>
+    <LinkedOpenRiaServerProject>..\$ext_safeprojectname$.Web\$ext_safeprojectname$.Web.csproj</LinkedOpenRiaServerProject>
+    <RootNamespace>$ext_safeprojectname$.Web</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

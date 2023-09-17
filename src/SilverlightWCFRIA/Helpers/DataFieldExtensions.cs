@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace SilverlightWCFRIA
+namespace $ext_safeprojectname$
 {
     /// <summary>
     ///     Provides extension methods for performing operations on a <see cref="DataField"/>.

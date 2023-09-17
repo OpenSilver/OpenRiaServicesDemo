@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace SilverlightWCFRIA.Web
+namespace $ext_safeprojectname$.Web
 {
     /// <summary>
     /// Extensions to the <see cref="User"/> class.

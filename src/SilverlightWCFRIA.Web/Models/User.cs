@@ -1,6 +1,6 @@
-﻿using OpenRiaServices.DomainServices.Server.ApplicationServices;
+using OpenRiaServices.DomainServices.Server.ApplicationServices;
 
-namespace SilverlightWCFRIA.Web
+namespace $ext_safeprojectname$.Web
 {
     /// <summary>
     /// Class containing information about the authenticated user.

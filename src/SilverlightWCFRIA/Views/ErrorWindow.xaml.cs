@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace SilverlightWCFRIA
+namespace $ext_safeprojectname$
 {
     public partial class ErrorWindow : ChildWindow
     {

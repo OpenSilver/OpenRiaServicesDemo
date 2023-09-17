@@ -3,7 +3,7 @@ using OpenRiaServices.DomainServices.Client.ApplicationServices;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SilverlightWCFRIA.Web
+namespace $ext_safeprojectname$.Web
 {
     /// <summary>
     /// Extensions to provide client side custom validation and data binding to <see cref="RegistrationData"/>.

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Data;
 
-namespace SilverlightWCFRIA
+namespace $ext_safeprojectname$
 {
     /// <summary>
     /// Two way <see cref="IValueConverter"/> that lets you bind the inverse of a boolean property to a dependency property.

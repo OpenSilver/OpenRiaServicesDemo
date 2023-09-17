@@ -1,7 +1,7 @@
 ﻿using OpenSilver.Simulator;
 using System;
 
-namespace SilverlightWCFRIA.Simulator
+namespace $ext_safeprojectname$.Simulator
 {
     internal static class Startup
     {

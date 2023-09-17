@@ -3,7 +3,7 @@ using OpenRiaServices.DomainServices.Client.ApplicationServices;
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SilverlightWCFRIA.LoginUI
+namespace $ext_safeprojectname$.LoginUI
 {
     /// <summary>
     /// This internal entity is used to ease the binding between the UI controls (DataForm and the label displaying a validation error) and the log on credentials entered by the user.

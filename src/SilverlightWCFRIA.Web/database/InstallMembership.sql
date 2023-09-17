@@ -1,4 +1,4 @@
-﻿CREATE TABLE [aspnet_Applications]
+CREATE TABLE [aspnet_Applications]
 (
 	[ApplicationId] TEXT PRIMARY KEY UNIQUE NOT NULL,
 	[ApplicationName] TEXT UNIQUE NOT NULL,

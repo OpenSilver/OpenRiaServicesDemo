@@ -1,6 +1,6 @@
 ﻿using OpenRiaServices.DomainServices.Client;
 using OpenRiaServices.DomainServices.Client.ApplicationServices;
-using SilverlightWCFRIA.Web;
+using $ext_safeprojectname$.Web;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace SilverlightWCFRIA.LoginUI
+namespace $ext_safeprojectname$.LoginUI
 {
     /// <summary>
     /// Form that presents the <see cref="RegistrationData"/> and performs the registration process.

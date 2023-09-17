@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:appControls="clr-namespace:SilverlightWCFRIA.Controls"
+                    xmlns:appControls="clr-namespace:$ext_safeprojectname$.Controls"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <Style TargetType="appControls:BusyIndicator" x:Key="busyIndicatorDefaultStyle">

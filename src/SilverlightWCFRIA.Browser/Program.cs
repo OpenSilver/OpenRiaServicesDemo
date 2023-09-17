@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace SilverlightWCFRIA.Browser
+namespace $ext_safeprojectname$.Browser
 {
     public class Program
     {
@@ -24,7 +24,7 @@ namespace SilverlightWCFRIA.Browser
         {
             Application.RunApplication(() =>
             {
-                var app = new SilverlightWCFRIA.App();
+                var app = new $ext_safeprojectname$.App();
             });
         }
     }
