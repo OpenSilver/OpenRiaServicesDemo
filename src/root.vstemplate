@@ -6,8 +6,8 @@
       <DefaultName>OpenSilverBusinessApplication</DefaultName>
       <ProvideDefaultName>true</ProvideDefaultName>
       <CreateInPlace>true</CreateInPlace>
-      <ProjectType>Web</ProjectType>
-      <ProjectSubType>CSharp</ProjectSubType>
+      <ProjectType>csharp</ProjectType>
+      <ProjectSubType>web</ProjectSubType>
       <LanguageTag>csharp</LanguageTag>
       <LanguageTag>xaml</LanguageTag>
       <ProjectTypeTag>web</ProjectTypeTag>
