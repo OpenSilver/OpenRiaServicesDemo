@@ -25,8 +25,7 @@
       </Folder>
       <ProjectItem ReplaceParameters="true" TargetFileName="Global.asax">Global.asax</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Global.asax.cs">Global.asax.cs</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="$ext_safeprojectname$TestPage.aspx">SilverlightWCFRIATestPage.aspx</ProjectItem>
-      <ProjectItem ReplaceParameters="true" TargetFileName="$ext_safeprojectname$TestPage.aspx">SilverlightWCFRIATestPage.aspx</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Default.aspx">Default.aspx</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Web.config">Web.config</ProjectItem>
     </Project>
   </TemplateContent>
